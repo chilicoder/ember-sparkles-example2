@@ -1,0 +1,32 @@
+<div class="col-sm-6">
+    <h3>Chart </h3>
+    {{#ember-sparkles
+            data=chartData
+            input-key='name'
+            output-key='value'
+
+            x-scale-type='band'
+            y-scale-type='linear'
+            x-domain=(map (r/get 'name') chartData)
+            y-domain=(append 0 100)
+    as |chart|}}
+
+        {{chart.x-axis
+                dy=(add chart.height 30)
+                dx=-100
+        }}
+        {{chart.y-axis
+                label='Carts'
+                ticks=5
+                yGrid=false
+                dx=(mult -0.5 chart.height)
+                dy=-30
+        }}
+        {{chart.bar-chart}}
+    {{/ember-sparkles}}
+</div>
+<div>
+
+
+</div>
+{{outlet}}
